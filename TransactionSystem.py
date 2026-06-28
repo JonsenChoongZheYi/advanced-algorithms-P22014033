@@ -250,7 +250,13 @@ def main():
                     new_id = random.randint(1000, 9999)
                 customer = input("Customer name: ")
                 product = input("Product name: ")
-                amount = float(input("Amount: "))
+                try:
+                    amount= float(input("Amount: "))
+                    if amount <= 0:
+                        raise ValueError("Amount must be a positive integer.")
+                except ValueError as e:
+                    print(f"Error: {e}")
+                    continue  # go back to menu without adding
                 date_str = input("Date (YYYY-MM-DD): ")
                 # Validate date format
                 try:
